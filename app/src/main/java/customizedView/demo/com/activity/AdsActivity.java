@@ -9,6 +9,8 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import customizedView.demo.com.R;
 import customizedView.demo.com.adapter.AdsPagerAdapter;
@@ -72,9 +74,35 @@ public class AdsActivity extends AppCompatActivity {
         adsArrayList.add(ads4);
         adsArrayList.add(ads5);
 
-        mAdsViewpager.setAdapter(new AdsPagerAdapter(adsArrayList, this));
         initDots();
-        updataMessageAndDot(0);//默认显示第一页数据
+
+        mAdsViewpager.setAdapter(new AdsPagerAdapter(adsArrayList, this));
+
+        //取Integer最大值的中间值作为viewpager默认显示的索引
+        int midValue = Integer.MAX_VALUE / 2;
+        //一般情况下，默认显示的应该是第一个view,为了确保这一点，需要做如下操作
+        int defaultPageIndex = midValue - midValue % (adsArrayList.size());
+        Log.e(TAG, "initData: defaultPageIndex == " + defaultPageIndex);
+        mAdsViewpager.setCurrentItem(defaultPageIndex);
+        updataMessageAndDot(defaultPageIndex);//默认显示第一页数据
+
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        new Timer().schedule(new TimerTask() {
+            @Override
+            public void run() {
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        Log.e(TAG, "run: zhixingle");
+                        mAdsViewpager.setCurrentItem(mAdsViewpager.getCurrentItem() + 1);
+                    }
+                });
+            }
+        }, 1000, 3000);//延迟1000ms后，每3000ms执行一次
     }
 
     /**
@@ -85,12 +113,12 @@ public class AdsActivity extends AppCompatActivity {
         //int currentItem = mAdsViewpager.getCurrentItem();
         // Log.e(Constants.TAG, "updataMessageAndDot: currentItem == " + currentItem);
         Log.e(Constants.TAG, "updataMessageAndDot: int currentPage == " + currentPage);
-        mTvMessage.setText(adsArrayList.get(currentPage).getMessage());
+        mTvMessage.setText(adsArrayList.get(currentPage % (adsArrayList.size())).getMessage());
 
         //更新dot
         for (int i = 0; i < mDotsLayout.getChildCount(); i++) {
             //为每个点设置选中状态，只有当前展示的page和子view的索引一致时，才设置选中状态为true
-            mDotsLayout.getChildAt(i).setSelected(i == currentPage);
+            mDotsLayout.getChildAt(i).setSelected(i == currentPage % (adsArrayList.size()));
         }
 
     }
@@ -100,15 +128,14 @@ public class AdsActivity extends AppCompatActivity {
         for (int i = 0; i < adsArrayList.size(); i++) {
             View view = new View(this);
             //因为我们在布局文件里面指定的是LinearLayout，所以这里要导入LinearLayout.LayoutParams
-            LinearLayout.LayoutParams dotParams = new LinearLayout.LayoutParams(12, 12);
+            LinearLayout.LayoutParams dotParams = new LinearLayout.LayoutParams(15, 15);
             //除第一个点外，其他点设置左边距为5dp
-            dotParams.leftMargin = 8;
-
+            if (i != 0) {
+                dotParams.leftMargin = 20;
+            }
             view.setLayoutParams(dotParams);
             view.setBackground(getDrawable(R.drawable.selector_dot));
             mDotsLayout.addView(view);//相当于在LinearLayout里面添加view
         }
-
-
     }
 }

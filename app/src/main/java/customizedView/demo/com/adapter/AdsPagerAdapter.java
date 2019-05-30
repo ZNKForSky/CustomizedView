@@ -29,7 +29,9 @@ public class AdsPagerAdapter extends PagerAdapter {
      */
     @Override
     public int getCount() {
-        return adsArrayList == null ? 0 : adsArrayList.size();
+        //当前的轮播图滑到第一页就不能往右滑了，滑到最后一页也不能往左滑，为了实现循环效果（其实是伪循环），
+        //这里指定view总数为Integer的最大值
+        return Integer.MAX_VALUE;
     }
 
     /**
@@ -56,7 +58,7 @@ public class AdsPagerAdapter extends PagerAdapter {
         Log.e(TAG, "instantiateItem: position == " + position);
         View view = View.inflate(mContext, R.layout.item_viewpager_ads, null);
         ImageView imgAds = view.findViewById(R.id.img_ads);
-        imgAds.setImageResource(adsArrayList.get(position).getAdsImgId());
+        imgAds.setImageResource(adsArrayList.get(position % (adsArrayList.size())).getAdsImgId());
         container.addView(view);//把渲染好的图片加载到viewpager中
         return view;
 
@@ -65,7 +67,7 @@ public class AdsPagerAdapter extends PagerAdapter {
     @Override
     public void destroyItem(@NonNull ViewGroup container, int position, @NonNull Object object) {
         //查看源码即可发现，destroyItem这个方法必须重写，因为它默认调用的destroyItem方法直接抛异常了，所以这里把它注掉
-       //super.destroyItem(container, position, object);
+        //super.destroyItem(container, position, object);
         container.removeView((View) object);
     }
 }
