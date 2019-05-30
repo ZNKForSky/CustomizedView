@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity.MenuActivity">
+
+    <RelativeLayout
+        android:id="@+id/rl_menu_level1"
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:background="@mipmap/level1">
+
+        <ImageView
+            android:id="@+id/icon_menu_main"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="5dp"
+            android:src="@mipmap/icon_home" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rl_menu_level2"
+        android:layout_width="180dp"
+        android:layout_height="90dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:background="@mipmap/level2">
+
+        <ImageView
+            android:id="@+id/icon_search"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginLeft="8dp"
+            android:layout_marginBottom="8dp"
+            android:src="@mipmap/icon_search" />
+
+        <ImageView
+            android:id="@+id/icon_myyouku"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="8dp"
+            android:layout_marginBottom="8dp"
+            android:src="@mipmap/icon_myyouku" />
+
+        <ImageView
+            android:id="@+id/icon_menu_secondary"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="6dp"
+            android:src="@mipmap/icon_menu"/>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rl_menu_level3"
+        android:layout_width="280dp"
+        android:layout_height="140dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:background="@mipmap/level3">
+
+        <ImageView
+            android:id="@+id/icon_music"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginLeft="10dp"
+            android:layout_marginBottom="8dp"
+            android:src="@mipmap/channel1" />
+
+        <ImageView
+            android:id="@+id/icon_maternal_baby"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginRight="10dp"
+            android:layout_marginBottom="8dp"
+            android:src="@mipmap/channel7" />
+
+        <ImageView
+            android:id="@+id/icon_finance"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="6dp"
+            android:src="@mipmap/channel4"/>
+
+        <ImageView
+            android:id="@+id/icon_movie"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginLeft="31dp"
+            android:layout_marginBottom="50dp"
+            android:src="@mipmap/channel2" />
+
+        <ImageView
+            android:id="@+id/icon_movie2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginRight="31dp"
+            android:layout_marginBottom="50dp"
+            android:layout_alignParentRight="true"
+            android:src="@mipmap/channel6" />
+
+        <ImageView
+            android:id="@+id/icon_biological"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginLeft="68dp"
+            android:layout_marginBottom="86dp"
+            android:src="@mipmap/channel3" />
+
+        <ImageView
+            android:id="@+id/icon_phone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginRight="68dp"
+            android:layout_marginBottom="86dp"
+            android:layout_alignParentRight="true"
+            android:src="@mipmap/channel5" />
+    </RelativeLayout>
+
+</RelativeLayout>
