@@ -97,7 +97,7 @@ public class AdsActivity extends AppCompatActivity {
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        Log.e(TAG, "run: zhixingle");
+                        Log.e(TAG, "run");
                         mAdsViewpager.setCurrentItem(mAdsViewpager.getCurrentItem() + 1);
                     }
                 });

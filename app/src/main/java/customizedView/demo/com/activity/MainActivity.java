@@ -10,18 +10,17 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import java.util.ArrayList;
-
 import customizedView.demo.com.R;
 
 public class MainActivity extends Activity implements AdapterView.OnItemClickListener {
     private static final String TAG = "znk";
     private ListView mListView;
-    private String[] views = {"播放器菜单", "轮播图"};
+    private String[] views = {"播放器菜单", "轮播图","Spinner效果"};
     private ArrayAdapter<String> arrayAdapter;
     private TextView tv;
     private final int FLAG_JUMP_TO_MENU = 0;
     private final int FLAG_JUMP_TO_SLIDESHOW = 1;
+    private final int FLAG_JUMP_TO_SPINNER = 2;
     private Intent intent;
 
     @Override
@@ -63,6 +62,9 @@ public class MainActivity extends Activity implements AdapterView.OnItemClickLis
                 break;
             case FLAG_JUMP_TO_SLIDESHOW:
                 intent.setClass(this, AdsActivity.class);
+                break;
+            case FLAG_JUMP_TO_SPINNER:
+                intent.setClass(this, SpinnerActivity.class);
                 break;
         }
         startActivity(intent);
